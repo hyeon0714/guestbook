@@ -22,7 +22,7 @@ jobs:	# 실행될 명령(깃허브에서 사요된다)
         run: mvn clean package
 
       - name: Build Docker image
-        run: docker build . -t xodid6960632/guestbook7:latest	# run: docker build . -t <도커허브id>/guestbook:latest
+        run: docker build -t xodid6960632/guestbook7:latest .	# run: docker build . -t <도커허브id>/guestbook:latest
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin	# 깃의 해당 저장소의 변수로 비밀번호 저장
