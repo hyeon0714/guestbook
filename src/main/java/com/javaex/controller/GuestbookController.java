@@ -51,7 +51,6 @@ public class GuestbookController {
 		return guest;
 	}
 	
-	
 	//리스트 가져오기
 	@ResponseBody
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
