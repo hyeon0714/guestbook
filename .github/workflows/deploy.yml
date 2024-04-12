@@ -1,9 +1,7 @@
 name: Deploy GuestbookApp #워크플로우 주석달기 //이름
 
-on: #이벤트 정의
-  push:	#2칸띄우기가 들여쓰기 //깃에 푸쉬할때
-    branches:
-      - master # 또는 프로젝트의 기본 브랜치명
+on:
+  workflow_dispatch:
 
 jobs:	# 실행될 명령(깃허브에서 사요된다)
   build-and-deploy:
