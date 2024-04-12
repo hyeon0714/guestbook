@@ -30,4 +30,19 @@ jobs:	# 실행될 명령(깃허브에서 사요된다)
       - name: Push Docker image to Docker Hub
         run: docker push xodid6960632/guestbook7:latest
         
-        
+  SSH:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: ssh to ec2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}	#ec2 ip주소
+          username: ${{ secrets.EC2_USERNAME }}	#ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }} #web.pem
+          script: |
+            sudo docker pull xodid6960632/guestbook7:latest
+            sudo docker stop guestbook7 || true
+            sudo docker rm guestbook7 || true
+            sudo docker run -d --name guestbook7 -p 8888:8888 xodid6960632/guestbook7:latest        
