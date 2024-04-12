@@ -24,7 +24,6 @@ public class GuestbookController {
 	@Autowired
 	private GuestbookService gs;
 	
-	
 	//삭제
 	@ResponseBody
 	@DeleteMapping(value = "/list/{no}")	//@deletemapping은 리퀘스트 메소드를 delete로 고정한다
